@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Task Manager - Login</title>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="loginBox">
+        <img src="./pics/wtlogo.png" alt="ourLogo">
+        <h1>W&T Task Manager</h1>
+        <div class="loginForm">
+            <input id="email" type="email" class="input-box" placeholder="Your email">
+            <input id="password" type="password" class="input-box" placeholder="Your password">
+            <button onclick="signIn()" type="button" class="signin-btn">Sign in</button>
+            <div class="or">
+                <hr>
+                <p>OR</p>
+                <hr>
+            </div>
+            <p style="font-size: larger;">Don't you have an account? <a href="./signup2.html">Sign up</a></p>
+        </div>
+    </div>
+</body>
+<script>
+    function signIn(){
+        let userList = localStorage.getItem('userList');
+        // Parse it to something usable in js
+        userList = JSON.parse(userList);
+        // console.log(userList);
+
+        let email = document.getElementById("email").value;
+        let pass = document.getElementById("password").value;
+
+        // we use for loop becasue we cannot break out of map when user is found! :
+        for(i=0; i<userList.length; i++){
+            if(userList[i].userEmail == email && userList[i].userPass == pass){
+                // console.log(`Hey ${userList[i].userName}. Login successful`);
+                localStorage.setItem('activeUser', JSON.stringify(userList[i]));
+                window.location.replace("./index.html");
+                return;
+            }
+        }
+        alert("Email/Password doesn't exist, please try again")
+    }
+</script>
+</html>

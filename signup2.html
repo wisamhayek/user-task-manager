@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <title>Task Manager - Signup</title>
+    <script src="script.js"></script>
+</head>
+<script>
+    function signUp(){
+        let userList = localStorage.getItem('userList');
+        // Parse it to something usable in js
+        userList = JSON.parse(userList);
+
+        let username = document.getElementById("username").value;
+        let email = document.getElementById("email").value;
+        let pass = document.getElementById("password").value;
+        
+        //generate randome/unique id for user
+        let uid = String.fromCharCode(Math.floor(Math.random() * 26) + 97)+ Math.random().toString(16).slice(2)+ Date.now().toString(16).slice(4);;
+        // console.log(uid);
+
+        if (username == "" || email == "" || pass == ""){
+            alert("Please fill all the required inputs")
+        }else {
+            let usersObj = {
+                userName: username,
+                userEmail: email,
+                userPass: pass,
+                userID: uid,
+                taskList: [
+                    {
+                    title: "",
+                    description: ""
+                    }
+                ]
+            }
+            userList.push(usersObj)
+            localStorage.setItem('userList', JSON.stringify(userList));
+            localStorage.setItem('activeUser', JSON.stringify(userList[(userList.length-1)]));
+            window.location.replace("./index.html");
+        }
+    }
+</script>
+<body>
+    <div class="signupBox">
+        <img src="./pics/wtlogo.png" alt="ourLogo">
+        <h1>W&T Task Manager</h1>
+        <h2>Sign-up now</h2>
+        <div class="signupForm">
+            <input type="username" class="input-box" id="username" placeholder="Create your username">
+            <input type="email" class="input-box" id="email" placeholder="Your email address">
+            <input type="password" class="input-box" id="password" placeholder="Create your password">
+            <button onclick="signUp()" type="button" class="signin-btn">Sign Up</button>
+            <div class="or">
+                <hr>
+                <p>OR</p>
+                <hr>
+            </div>
+            <p style="font-size: larger;">You have an account? <a href="./login2.html">Sign In</a></p>
+        </div>
+    </div>
+</body>
+</html>

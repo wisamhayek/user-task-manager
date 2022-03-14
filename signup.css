@@ -1,0 +1,66 @@
+body{
+    background-color: beige;
+}
+.signupBox{
+    margin: auto;
+    width: fit-content;
+    background-color: white;
+    text-align: center;
+    margin-top: 4rem;
+    box-shadow: 0 0 3px 0 rgb(0 0 0 / 30%);
+}
+.signupBox img{
+    width: 70px;
+    margin-top: -2rem;
+}
+.signupBox h1{
+    color: rgb(12, 180, 247);
+}
+.signupBox h2{
+    color: green;
+}
+.signupForm{
+    height: 20rem;
+}
+.signupForm input{
+    width: 50%;
+    height: 2rem;
+    margin-top: 1rem;
+    border-radius: 20px;
+    border: 1px solid gray;
+}
+.signin-btn{
+    margin-top: 1rem;
+    background-color: #1c8adb;
+    border-radius: 20px;
+    width: 50%;
+    color: white;
+    height: 2rem;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+}
+hr{
+    width: 100%;
+    height: min-content;
+    margin-top: 1.5rem;
+}
+.or{
+    display: grid;
+    grid-template-columns: 45% 10% 45%;
+}
+
+
+/* Mobile/iPhone Style */
+@media (min-width: 320px) and (max-width: 480px) {
+    /* .loginBox{
+        width: 95%;
+    } */
+
+    .signupForm input{
+        width: 80%;
+    }
+    .signin-btn{
+        width: 50%;
+    }
+}
